@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
+  background: #000000;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Bebas Neue', Helvetica, sans-serif;
+}
+
+.h1,
+h1 {
+  @apply text-3xl leading-tight;
+}
+
+.h2,
+h2 {
+  @apply text-2xl font-bold;
+}
+
+.h3,
+h3 {
+  @apply text-xl;
+}
+
+.h4,
+h4 {
+  @apply text-base;
+}
+
+.a,
+a {
+  @apply !no-underline;
+}
+
+i{
+  @apply text-white text-[40px]
+}
+
+
+
+@layer utilities {
+
+  /* HEADER */
+
+  header{
+    @apply flex items-center justify-between pr-4 pt-2 min-h-21
+  }
+
+  .logo-div{
+    @apply ml-10
+  }
+
+  .logo{
+    @apply w-26 md:w-30;
+  }
+
+  /* MENU OVERLAY */
+
+  .background-overlay{
+  @apply fixed inset-0 bg-black/90 z-1000;
+  }
+
+  .menu-div{
+    @apply cursor-pointer;
+  }
+
+  .menu-overlay{
+  @apply flex flex-col absolute right-0 border-1 top-0 p-20  z-1001;
+}
+
+  .menu-text, .menu-close{
+  @apply cursor-pointer text-5xl text-white transition-all duration-300 ease-in-out opacity-50
+}
+  .menu-close{
+  @apply absolute right-4 top-5;
+}
+
+  .menu-text:hover, .menu-close:hover {
+  @apply opacity-100;
+}
+
+/* HOME CANVAS LOGO */
+
+  .canvas-div {
+    @apply mx-auto w-full h-120 md:h-200 2xl:h-205 z-1;
+  }
+
+  /* ALBUMS */
+    .albums-div{
+      @apply flex flex-col justify-center items-center gap-32 my-12;
+    }
+    .album{
+      @apply text-white 
+    }
+    .album-img-div{
+      @apply w-80 h-auto
+    }
+    .album-title-div{
+      @apply mt-4
+    }
+
+    .album h3{
+      @apply !text-4xl;
+    }
+    .album p{
+      @apply !text-2xl;
+    }
+
 }
