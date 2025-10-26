@@ -1,15 +1,21 @@
 import React from "react";
-import supabase from "@/api/client";
 import Image from "next/image";
+import { getAlbums, getArtists } from "@/api/queries";
+import Link from "next/link";
 
 export default async function page() {
-  const { data: albums, error } = await supabase
-    .from("album")
-    .select("*,artist(*)");
-
-  if (error) {
-    console.error("Error fetching albums:", error);
+  let albums = [];
+  let artists = [];
+  try {
+    albums = await getAlbums();
+  } catch (error) {
     return <div>Error fetching albums: {error.message}</div>;
+  }
+
+  try {
+    artists = await getArtists();
+  } catch (error) {
+    return <div>Error fetching artists: {error.message}</div>;
   }
 
   if (!albums || albums.length === 0) {
@@ -19,25 +25,38 @@ export default async function page() {
       </div>
     );
   }
+  if (!artists || artists.length === 0) {
+    return (
+      <div className="text-white flex items-center justify-center text-3xl mt-20">
+        No artists found.
+      </div>
+    );
+  }
 
   return (
     <div className="albums-div">
       {albums.map((album) => (
-        <div className="album" key={album.id}>
-          <div className="album-img-div">
-            <Image
-              src={album.cover_url}
-              alt={album.title}
-              width={500}
-              height={500}
-            />
-          </div>
+        <Link href={`/albums/${album.id}`} key={album.id}>
+          <div className="album">
+            <div className="album-img-div">
+              <Image
+                src={album.cover_url}
+                alt={album.title}
+                width={500}
+                height={500}
+              />
+            </div>
 
-          <div className="album-title-div">
-            <h3>{album.title}</h3>
-            <p>[{album.catalog}]</p>
+            <div className="album-title-div">
+              <h3>{album.title}</h3>
+              <h4>
+                {artists.find((a) => a.id === album.artist_id)?.name ||
+                  "Unknown Artist"}
+              </h4>
+              <p>[{album.catalog}]</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

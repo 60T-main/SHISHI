@@ -10,7 +10,7 @@ export default function ThreeLogoScene({ url }) {
 
   useFrame(() => {
     if (group.current) {
-      group.current.rotation.z += 0.0003;
+      group.current.rotation.z += 0.00035;
     }
   });
   return (

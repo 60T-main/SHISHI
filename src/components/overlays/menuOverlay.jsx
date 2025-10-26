@@ -32,7 +32,9 @@ export default function MenuOverlay() {
             <div className="menu-close" onClick={closeOverlay}>
               <i className="bi bi-x-lg"></i>
             </div>
-            <div className="menu-text">MERCH</div>
+            <Link href="/merch">
+              <div className="menu-text">MERCH</div>
+            </Link>
             <Link href="/albums">
               <div className="menu-text">ALBUMS</div>
             </Link>
