@@ -47,8 +47,30 @@ export const getArtist = async (id) => {
     return artist ? artist : null;
 }
       
-  export const getMerch =  async () => {
-    const { data: merch, error } = await supabase.from("merch").select("*");
+  export const getMerch =  async (id) => {
+    let query = supabase.from("merch").select("*");
+    if (id) {
+      query = query.eq("id", id);
+    }
+    
+    const { data: merch, error } = await query;
+
+    if (error) {
+      console.error("Error fetching merch:", error);
+      return error.message
+      }
+    
+    return merch;
+
+
+};
+  export const getMerchByAlbum =  async (id) => {
+    let query = supabase.from("merch").select("*");
+    if (id) {
+      query = query.eq("album_id", id);
+    }
+    
+    const { data: merch, error } = await query;
 
     if (error) {
       console.error("Error fetching merch:", error);

@@ -101,13 +101,13 @@ i{
 
   /* ALBUMS & MERCH */
     .albums-div, .merches-div{
-      @apply flex flex-col justify-center items-center gap-32 my-12;
+      @apply flex flex-col justify-center items-center gap-32 my-12 lg:flex-row flex-wrap lg:px-20;
     }
     .album, .merch{
       @apply text-white 
     }
     .album-img-div, .merch-img-div{
-      @apply w-80 h-auto mx-auto;
+      @apply w-80 h-auto mx-auto md:w-full;
     }
     .album-title-div, .merch-title-div{
       @apply mt-4
@@ -126,6 +126,21 @@ i{
     }
 
   /* ALBUM DETAIL PAGE */
+  
+    .album-bancamp-parent{
+      @apply flex flex-col my-2 lg:flex-row items-center justify-center gap-4 lg:gap-25 lg:my-25;
+    }
+
+    .embed-div{
+      @apply md:w-130 lg:w-1/4
+    }
+
+  .embed{
+    border: 0; 
+    width: 360; 
+    height: 274;
+    @apply md:w-full lg:!w-full lg:h-140
+  }
 
   .embed-div iframe{
     @apply mx-auto;
@@ -134,5 +149,138 @@ i{
   .release-catalog-div{
     @apply flex justify-between;
   }
+
+  .merch-album-parent{
+    @apply my-15
+  }
+
+.album-merch-header{
+  @apply flex items-center justify-center w-full
+}
+        .merches-div-album {
+          @apply flex items-center flex-row flex-wrap mt-20 justify-around
+        }
+
+        .merch-album-img-div{
+          @apply w-80
+        }
+
+  /* Merch Detail Page */
+
+  .price-buy-div{
+    @apply flex flex-col items-end 
+  }
+  .price-buy-div p{
+    @apply !text-base md:!text-lg lg:text-xl;
+  }
+
+  .price-buy-div h2{
+    @apply !text-base md:!text-xl lg:!text-2xl cursor-pointer;
+  }
+
+
+/* text glitch */
+
+.center {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.glitch {
+  position: relative;
+  color: white;
+  mix-blend-mode: lighten;
+
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: black;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  &:before {
+    left: -1px;
+    text-shadow: 1px 0 rgba(red, 0.7);
+  }
+
+  &:after {
+    left: 1px;
+    text-shadow: -1px 0 rgba(blue, 0.7);
+  }
+
+  &:hover {
+    &:before {
+      text-shadow: 4px 0 rgba(red, 0.7);
+      animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse;
+    }
+
+    &:after {
+      text-shadow: -5px 0 rgba(blue, 0.7);
+      animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse;
+    }
+  }
+}
+
+@keyframes glitch-loop-1 {
+  0% {
+    clip: rect(2px, 9999px, 6px, 0);
+  }
+
+  25% {
+    clip: rect(3px, 9999px, 12px, 0);
+  }
+
+  50% {
+    clip: rect(7px, 9999px, 14px, 0);
+  }
+
+  75% {
+    clip: rect(4px, 9999px, 10px, 0);
+  }
+
+  100% {
+    clip: rect(8px, 9999px, 13px, 0);
+  }
+}
+
+@keyframes glitch-loop-2 {
+  0% {
+    top: -1px;
+    left: 1px;
+    clip: rect(10px, 9999px, 15px, 0);
+  }
+
+  25% {
+    top: -2px;
+    left: 2px;
+    clip: rect(12px, 9999px, 4px, 0);
+  }
+
+  50% {
+    top: -1px;
+    left: 1px;
+    clip: rect(9px, 9999px, 2px, 0);
+  }
+
+  75% {
+    top: 0px;
+    left: -2px;
+    clip: rect(13px, 9999px, 8px, 0);
+  }
+
+  100% {
+    top: -1px;
+    left: -1px;
+    clip: rect(5px, 9999px, 16px, 0);
+  }
+}
+
 
 }

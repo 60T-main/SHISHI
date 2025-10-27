@@ -1,6 +1,7 @@
 import React from "react";
 import { getMerch } from "@/api/queries";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function page() {
   let merches = [];
@@ -8,7 +9,7 @@ export default async function page() {
   try {
     merches = await getMerch();
   } catch (error) {
-    return <div>Error fetching artists: {error.message}</div>;
+    return <div>Error fetching merch: {error.message}</div>;
   }
 
   if (!merches || merches.length === 0) {
@@ -21,21 +22,22 @@ export default async function page() {
   return (
     <div className="merches-div">
       {merches.map((merch) => (
-        <div className="merch" key={merch.id}>
-          <div className="merch-img-div">
-            <Image
-              src={merch.image_urls[0]}
-              alt={merch.name}
-              width={500}
-              height={500}
-            />
+        <Link href={`/merch/${merch.id}`} key={merch.id}>
+          <div className="merch">
+            <div className="merch-img-div">
+              <Image
+                src={merch.image_urls[0]}
+                alt={merch.name}
+                width={500}
+                height={500}
+              />
+            </div>
+            <div className="merch-title-div">
+              <h4>{merch.name}</h4>
+              <p>{merch.type}</p>
+            </div>
           </div>
-
-          <div className="merch-title-div">
-            <h4>{merch.name}</h4>
-            <p>{merch.type}</p>
-          </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

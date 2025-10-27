@@ -3,6 +3,7 @@ import Header from "../components/Header.jsx";
 import MenuOverlay from "@/components/overlays/menuOverlay";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PageProviderClient from "../hooks/PageProviderClient";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({ children }) {
   return (

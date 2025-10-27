@@ -1,11 +1,17 @@
 import React from "react";
-import { getAlbum, getArtist } from "@/api/queries";
+import { getAlbum, getArtist, getMerchByAlbum } from "@/api/queries";
 import Image from "next/image";
+
+import { ColorProvider } from "@/hooks/ColorProvider";
+import AlbumImage from "@/components/albumImage.jsx";
+import BandcampEmbed from "@/components/BandcampEmbed";
 
 export default async function page({ params }) {
   const id = (await params).id;
   let album = null;
   let artist = null;
+  let merches = null;
+  let merchDom = "";
 
   // Fetch Album
   try {
@@ -23,9 +29,8 @@ export default async function page({ params }) {
     );
   } else {
     album = album[0];
-    console.log(album);
 
-    //   Fetch Artist
+    // Fetch Artist
     try {
       artist = await getArtist(album.artist_id);
     } catch (error) {
@@ -42,41 +47,74 @@ export default async function page({ params }) {
     } else {
       artist = artist[0];
     }
+
+    // Fetch Merch
+
+    try {
+      merches = await getMerchByAlbum(album.id);
+    } catch (error) {
+      <div>
+        Error fetching merch {album.id}: {error.message}
+      </div>;
+    }
+    console.log(merches);
+
+    if (merches && merches[0] && !(merches.length === 0)) {
+      merchDom = (
+        <div className="merch-album-parent">
+          <h2 className="album-merch-header">Merch</h2>
+          <div className="merches-div-album">
+            {merches.map((merch) => (
+              <div className="merch-album" key={merch.id}>
+                <div className="merch-album-img-div">
+                  <Image
+                    src={merch.image_urls[0]}
+                    alt={merch.name}
+                    width={500}
+                    height={500}
+                  />
+                </div>
+                <div className="merch-title-div">
+                  <h4>{merch.name}</h4>
+                  <p>{merch.type}</p>
+                  <div className="price-buy-div">
+                    <p>€{merch.price}</p>
+                    <a href="https://shishirecords.bandcamp.com/merch">
+                      <h2 className="glitch" data-text="Buy Now">
+                        Buy <span>Now</span>
+                      </h2>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
     // embed styles
   }
-  const style = { border: 0, width: 360, height: 274 };
-  const albumId = 309505626;
-  const color = album.id === 1 ? "aa0b0a" : "ffffff";
+  const albumId = album.bandcamp_id;
+
   return (
-    <>
-      <div className="albums-div">
-        <div className="album">
-          <div className="album-img-div">
-            <Image
-              src={album.cover_url}
-              alt={album.title}
-              width={500}
-              height={500}
-            />
-          </div>
-          <div className="album-title-div">
-            <h3>{album.title}</h3>
-            <h4>{artist.name}</h4>
-            <div className="release-catalog-div">
-              <p>[{album.catalog}]</p>
-              <p>{album.release_date}</p>
+    <ColorProvider>
+      <div className="album-bancamp-parent">
+        <div className="albums-div">
+          <div className="album">
+            <AlbumImage album={album} />
+            <div className="album-title-div">
+              <h3>{album.title}</h3>
+              <h4>{artist.name}</h4>
+              <div className="release-catalog-div">
+                <p>[{album.catalog}]</p>
+                <p>{album.release_date}</p>
+              </div>
             </div>
           </div>
         </div>
+        <BandcampEmbed albumId={albumId} />
       </div>
-      <div className="embed-div">
-        <iframe
-          style={style}
-          src={`https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=333333/linkcol=${color}/artwork=small/transparent=true/`}
-          seamless
-          title="Bandcamp Player"
-        />
-      </div>
-    </>
+      {merchDom ? merchDom : ""}
+    </ColorProvider>
   );
 }
