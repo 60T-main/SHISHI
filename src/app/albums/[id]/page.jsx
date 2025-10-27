@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ColorProvider } from "@/hooks/ColorProvider";
 import AlbumImage from "@/components/albumImage.jsx";
 import BandcampEmbed from "@/components/BandcampEmbed";
+import MerchImages from "@/components/MerchImages";
 
 export default async function page({ params }) {
   const id = (await params).id;
@@ -67,12 +68,7 @@ export default async function page({ params }) {
             {merches.map((merch) => (
               <div className="merch-album" key={merch.id}>
                 <div className="merch-album-img-div">
-                  <Image
-                    src={merch.image_urls[0]}
-                    alt={merch.name}
-                    width={500}
-                    height={500}
-                  />
+                  <MerchImages images={merch.image_urls} />
                 </div>
                 <div className="merch-title-div">
                   <h4>{merch.name}</h4>
@@ -99,7 +95,7 @@ export default async function page({ params }) {
   return (
     <ColorProvider>
       <div className="album-bancamp-parent">
-        <div className="albums-div">
+        <div className="albums-detail-div">
           <div className="album">
             <AlbumImage album={album} />
             <div className="album-title-div">

@@ -38,9 +38,15 @@ export default function MenuOverlay() {
             <Link href="/albums">
               <div className="menu-text">ALBUMS</div>
             </Link>
-            <div className="menu-text">PODCAST</div>
-            <div className="menu-text">CONTACT</div>
-            <div className="menu-text">INFO</div>
+            <Link href="/podcast">
+              <div className="menu-text">PODCAST</div>
+            </Link>
+            <Link href="/contact">
+              <div className="menu-text">CONTACT</div>
+            </Link>
+            <Link href="/info">
+              <div className="menu-text">INFO</div>
+            </Link>
           </div>
         </>
       )}

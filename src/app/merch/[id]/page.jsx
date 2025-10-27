@@ -1,6 +1,7 @@
 import React from "react";
 import { getMerch } from "@/api/queries";
 import Image from "next/image";
+import MerchImages from "@/components/MerchImages";
 
 export default async function page({ params }) {
   const id = (await params).id;
@@ -28,12 +29,7 @@ export default async function page({ params }) {
     <div className="merches-div">
       <div className="merch">
         <div className="merch-img-div">
-          <Image
-            src={merch.image_urls[0]}
-            alt={merch.name}
-            width={500}
-            height={500}
-          />
+          <MerchImages images={merch.image_urls} />
         </div>
         <div className="merch-title-div">
           <h4>{merch.name}</h4>
