@@ -3,7 +3,7 @@ import { getAlbum, getArtist, getMerchByAlbum } from "@/api/queries";
 import Image from "next/image";
 
 import { ColorProvider } from "@/hooks/ColorProvider";
-import AlbumImage from "@/components/AlbumImage.jsx";
+import AlbumImage from "@/components/AlbumImage";
 import BandcampEmbed from "@/components/BandcampEmbed";
 import MerchImages from "@/components/MerchImages";
 

@@ -9,6 +9,8 @@
   --color-background: var(--background);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-main: 'MainFont', Helvetica, sans-serif;
+  --font-second: 'SecondFont', Helvetica, sans-serif;
 }
 
 @font-face {
@@ -18,13 +20,22 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'SecondFont';
+  src: url('/fonts/Plein-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 
 body {
   background: #000000;
   color: white;
-  font-family: 'MainFont','Bebas Neue', Helvetica, sans-serif;
+  font-family: 'MainFont','SecondFont', Helvetica, sans-serif;
 }
+
+
 
 body.overlay-open {
   overflow: hidden !important;
@@ -119,7 +130,7 @@ i{
 }
 
   .menu-text, .menu-close{
-  @apply cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-50;
+  @apply font-second cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-100 md:opacity-50;
 }
   .menu-close{
   @apply absolute right-4 top-5;
