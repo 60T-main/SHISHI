@@ -42,8 +42,7 @@ body.overlay-open {
 }
 
 main{
-  min-height: 80vh;
-  @apply md:min-h-['100vh'];
+  @apply min-h-['100vh'];
 }
 
 .h1,
