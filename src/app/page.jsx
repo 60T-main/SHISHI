@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import LogoModel from "@/components/ThreeLogoScene";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
   return (

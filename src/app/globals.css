@@ -42,7 +42,8 @@ body.overlay-open {
 }
 
 main{
-  min-height: 100vh;
+  min-height: 80vh;
+  @apply md:min-h-['100vh'];
 }
 
 .h1,
@@ -144,6 +145,10 @@ i{
 
   .canvas-div {
     @apply mx-auto w-full h-150 md:h-200 2xl:h-205 z-1;
+  }
+
+  .canvas{
+    touch-action: pan-y !important;
   }
 
   /* ALBUMS & MERCH */
