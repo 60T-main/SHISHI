@@ -78,7 +78,7 @@ i{
   /* HEADER */
 
   header{
-    @apply flex items-center justify-between pr-4 pt-2 min-h-21
+    @apply flex items-center justify-between pr-4 pt-2 h-21
   }
 
   .logo-div{
