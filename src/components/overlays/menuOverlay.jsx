@@ -12,6 +12,12 @@ export default function MenuOverlay() {
     usePageHooks();
 
   useEffect(() => {
+    overlayState
+      ? document.body.classList.add("overlay-open")
+      : document.body.classList.remove("overlay-open");
+  }, [overlayState]);
+
+  useEffect(() => {
     if (overlayState) {
       const elements = document.querySelectorAll(".menu-text");
       elements.forEach((element) => {

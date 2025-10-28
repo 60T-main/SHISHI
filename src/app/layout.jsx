@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "../components/Header.jsx";
+import Footer from "@/components/Footer";
 import MenuOverlay from "@/components/overlays/menuOverlay";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PageProviderClient from "../hooks/PageProviderClient";
@@ -13,13 +14,27 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+Georgian:wght@100..900&display=swap"
           rel="stylesheet"
         />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
       </head>
       <body>
         <PageProviderClient>
           <div id="overlay-portal-root"></div>
           <Header />
-          <MenuOverlay />
-          {children}
+          <main>
+            <MenuOverlay />
+            {children}
+          </main>
+          <Footer />
         </PageProviderClient>
       </body>
     </html>

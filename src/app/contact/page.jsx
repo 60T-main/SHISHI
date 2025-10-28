@@ -22,9 +22,9 @@ export default function ContactPage() {
   const onSubmit = () => {};
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black py-12 px-4">
-      <div className="w-full max-w-lg p-8">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">
+    <div className="flex flex-col items-center justify-start bg-black py-12 px-4 min-h-screen">
+      <div className="w-full max-w-lg px-8">
+        <h1 className="!text-4xl font-bold text-white mb-8 text-center">
           Contact
         </h1>
         <form className="space-y-6">

@@ -26,6 +26,14 @@ body {
   font-family: 'MainFont','Bebas Neue', Helvetica, sans-serif;
 }
 
+body.overlay-open {
+  overflow: hidden !important;
+}
+
+main{
+  min-height: 100vh;
+}
+
 .h1,
 h1 {
   @apply text-7xl leading-tight;
@@ -73,10 +81,33 @@ i{
     @apply w-26 md:w-30;
   }
 
+  /* FOOTER */
+
+  .footer{
+    @apply w-full;
+  }
+  .footer-content{
+    @apply flex flex-col items-center justify-center gap-2;
+  }
+  .stream{
+    @apply flex gap-2;
+  }
+  .stream i{
+    @apply !text-lg md:!text-2xl opacity-60 !cursor-pointer;
+  }
+  .stream i:hover{
+    @apply opacity-100;
+  }
+  .copyright{
+    @apply text-xs md:text-sm opacity-60;
+  }
+
+
+
   /* MENU OVERLAY */
 
   .background-overlay{
-  @apply fixed inset-0 bg-black/94 z-1000;
+  @apply fixed inset-0 bg-black/94 z-1000 !overflow-y-hidden;
   }
 
   .menu-div{
@@ -88,7 +119,7 @@ i{
 }
 
   .menu-text, .menu-close{
-  @apply cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-50
+  @apply cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-50;
 }
   .menu-close{
   @apply absolute right-4 top-5;
@@ -106,7 +137,7 @@ i{
 
   /* ALBUMS & MERCH */
     .albums-div, .merches-div{
-      @apply flex flex-col justify-center items-center gap-32 my-12 lg:flex-row flex-wrap lg:!px-20 xl:!px-65;
+      @apply flex flex-col justify-center items-center gap-32 mt-12 mb-24 md:!my-24 lg:flex-row flex-wrap lg:!px-20 2xl:!px-65;
     }
     .album, .merch{
       @apply text-white 
@@ -114,6 +145,12 @@ i{
     .album-img-div, .merch-img-div{
       @apply w-80 h-auto mx-auto md:w-100;
     }
+        .album-img-div img,
+        .merch-img-div img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
     .album-title-div, .merch-title-div{
       @apply mt-4
     }
@@ -219,10 +256,8 @@ i{
 /* INFO PAGE */
 
 .info-div{
-  @apply flex flex-col gap-6 p-12 md:p-24 lg:p-60 lg:mt-0 text-lg lg:text-2xl mt-20;
+  @apply flex flex-col gap-6 px-12 pb-18 md:p-24 lg:p-60 lg:mt-0 text-lg lg:text-2xl mt-20;
 }
-
-
 
 
 
