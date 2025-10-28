@@ -41,9 +41,6 @@ body.overlay-open {
   overflow: hidden !important;
 }
 
-main{
-  @apply min-h-['100vh'];
-}
 
 .h1,
 h1 {
@@ -95,7 +92,7 @@ i{
   /* FOOTER */
 
   .footer{
-    @apply w-full;
+    @apply w-full flex justify-center items-center;
   }
   .footer-content{
     @apply flex flex-col items-center justify-center gap-2;
@@ -130,7 +127,7 @@ i{
 }
 
   .menu-text, .menu-close{
-  @apply font-second cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-100 md:opacity-50;
+  @apply cursor-pointer text-4xl text-white transition-all duration-300 ease-in-out opacity-100 md:opacity-50;
 }
   .menu-close{
   @apply absolute right-4 top-5;

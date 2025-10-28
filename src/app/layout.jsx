@@ -27,15 +27,19 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <PageProviderClient>
-          <div id="overlay-portal-root"></div>
-          <Header />
-          <main>
-            <MenuOverlay />
-            {children}
-          </main>
-          <Footer />
-        </PageProviderClient>
+        <main>
+          <PageProviderClient>
+            <div id="overlay-portal-root"></div>
+            <div className="min-h-[100dvh] grid grid-rows[auto_1fr_auto]">
+              <Header />
+
+              <MenuOverlay />
+              {children}
+
+              <Footer />
+            </div>
+          </PageProviderClient>
+        </main>
       </body>
     </html>
   );
