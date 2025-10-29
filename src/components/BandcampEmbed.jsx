@@ -5,17 +5,21 @@ import { useSharedValue } from "@/hooks/ColorProvider";
 export default function BandcampEmbed({ albumId }) {
   const { color } = useSharedValue();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(color);
+  }, [color]);
   return (
     <div className="embed-div">
-      <iframe
-        className="embed"
-        src={`https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=333333/linkcol=${
-          color ? color : "FFFFFF"
-        }/artwork=small/transparent=true/`}
-        seamless
-        title="Bandcamp Player"
-      />
+      {color && (
+        <iframe
+          className="embed"
+          src={`https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=333333/linkcol=${
+            color ? color.toLowerCase() : "ffffff"
+          }/artwork=small/transparent=true/`}
+          seamless
+          title="Bandcamp Player"
+        />
+      )}
     </div>
   );
 }

@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["f4.bcbits.com"],
+    domains: ["f4.bcbits.com", "imgproxy.ra.co"],
   },
 };
 

@@ -140,7 +140,7 @@ i{
 /* HOME CANVAS LOGO */
 
   .canvas-div {
-    @apply mx-auto w-full h-150 md:h-200 2xl:h-205 z-1;
+    @apply mx-auto w-full h-130 md:h-180 2xl:h-180 z-1;
   }
 
   .canvas{
@@ -190,7 +190,7 @@ i{
     }
 
     .embed-div{
-      @apply md:w-130 lg:w-1/3 2xl:w-1/4
+      @apply md:w-130 lg:w-1/3 2xl:w-1/4 min-h-80
     }
 
   .embed{
@@ -272,6 +272,14 @@ i{
 }
 
 
+/* EVENT PAGE */
+
+.event{
+  @apply flex flex-col gap-4 
+}
+.event div{
+  @apply mx-auto
+}
 
 
 /* text glitch effect */

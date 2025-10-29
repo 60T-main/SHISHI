@@ -10,7 +10,6 @@ export default function AlbumImage(album) {
   useEffect(() => {
     avg_color = getAverageRGB(document.getElementById("i"));
     setColor(avg_color);
-    console.log(avg_color);
   }, []);
   return (
     <div className="album-img-div">
