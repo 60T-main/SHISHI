@@ -1,12 +1,8 @@
 "use client";
 import React from "react";
 import { useEffect, useState } from "react";
-import { Resend } from "resend";
 
 export default function ContactPage() {
-  // Set up email after domain is ready
-  //   const resend = new Resend(process.env.RESEND_API_KEY);
-
   const [form, setForm] = useState({
     name: null,
     email: null,
@@ -19,15 +15,37 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: `name: ${form.name}, subject: ${form.subject}`,
+          text: `mail: ${form.email}, message: ${form.message}`,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        alert("Failed to send email: " + (result.error || "Unknown error"));
+      } else {
+        alert("Email sent successfully!");
+      }
+    } catch (err) {
+      alert("An error occurred: " + err.message);
+    }
+  };
 
   return (
-    <div className="flex flex-col items-center justify-start bg-black py-12 px-4 min-h-screen">
+    <div className="flex flex-col items-center justify-start bg-black pt-12 px-4">
       <div className="w-full max-w-lg px-8">
         <h1 className="!text-4xl font-bold text-white mb-8 text-center">
           Contact
         </h1>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={onSubmit}>
           <div>
             <label htmlFor="name" className="block text-white mb-2">
               Name
@@ -96,9 +114,8 @@ export default function ContactPage() {
             />
           </div>
           <button
-            type="button"
-            onClick={onSubmit}
-            className="w-full py-2 px-4 rounded bg-zinc-700 text-white font-semibold hover:bg-zinc-600 transition-colors cursor-not-allowed"
+            type="submit"
+            className="w-full py-2 px-4 rounded bg-zinc-700 text-white font-semibold hover:bg-zinc-600 transition-colors"
           >
             Send
           </button>
