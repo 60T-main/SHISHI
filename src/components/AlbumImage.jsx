@@ -1,24 +1,25 @@
 "use client";
-import React, { useEffect } from "react";
-import Image from "next/image";
-import { getAverageRGB } from "@/utils/averageColor";
-import { useSharedValue } from "@/hooks/ColorProvider";
+import React, { useEffect, useRef } from "react";
+// import { getAverageRGB } from "@/utils/averageColor";
+// import { useSharedValue } from "@/hooks/ColorProvider";
 
 export default function AlbumImage(album) {
-  const { color, setColor } = useSharedValue();
-  let avg_color = null;
-  useEffect(() => {
-    avg_color = getAverageRGB(document.getElementById("i"));
-    setColor(avg_color);
-  }, []);
+  // const imgRef = useRef(null);
+  // const { color, setColor } = useSharedValue();
+  // let avg_color = null;
+  // useEffect(() => {
+  //   if (imgRef.current) {
+  //     avg_color = getAverageRGB(imgRef.current);
+  //     setColor(avg_color);
+  //   }
+  // }, []);
+
   return (
     <div className="album-img-div">
-      <Image
-        id="i"
+      <img
         src={album.album.cover_url}
         alt={album.album.title}
-        width={500}
-        height={500}
+        loading="eager"
       />
     </div>
   );

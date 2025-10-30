@@ -44,6 +44,7 @@ export default async function page() {
                 alt={album.title}
                 width={500}
                 height={500}
+                loading="eager"
               />
             </div>
 

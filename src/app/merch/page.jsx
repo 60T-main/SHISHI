@@ -2,6 +2,7 @@ import React from "react";
 import { getMerch } from "@/api/queries";
 import Image from "next/image";
 import Link from "next/link";
+import MerchImage from "@/components/MerchImage";
 
 export default async function page() {
   let merches = [];
@@ -24,14 +25,7 @@ export default async function page() {
       {merches.map((merch) => (
         <Link href={`/merch/${merch.id}`} key={merch.id}>
           <div className="merch">
-            <div className="merch-img-div">
-              <Image
-                src={merch.image_urls[0]}
-                alt={merch.name}
-                width={500}
-                height={500}
-              />
-            </div>
+            <MerchImage merch={merch} />
             <div className="merch-title-div">
               <h4>{merch.name}</h4>
               <p>{merch.type}</p>

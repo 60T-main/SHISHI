@@ -58,7 +58,6 @@ export default async function page({ params }) {
         Error fetching merch {album.id}: {error.message}
       </div>;
     }
-    console.log(merches);
 
     if (merches && merches[0] && !(merches.length === 0)) {
       merchDom = (
@@ -96,7 +95,7 @@ export default async function page({ params }) {
     <ColorProvider>
       <div className="album-bancamp-parent">
         <div className="albums-detail-div">
-          <div className="album">
+          <div className="album-detail">
             <AlbumImage album={album} />
             <div className="album-title-div">
               <h3>{album.title}</h3>

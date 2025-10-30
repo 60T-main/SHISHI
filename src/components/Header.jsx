@@ -8,14 +8,15 @@ export default function Header() {
     <header>
       <div className="logo-div">
         <Link href="/">
-          <Image
+          {/* <Image
             loading="eager"
             src="/logo.svg"
             alt="logo"
             width={500}
             height={500}
             className="logo"
-          />
+          /> */}
+          <img src="/logo.svg" alt="logo" className="logo" />
         </Link>
       </div>
 

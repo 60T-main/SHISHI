@@ -78,7 +78,7 @@ i{
   /* HEADER */
 
   header{
-    @apply flex items-center justify-between pr-4 pt-2 h-21
+    @apply flex items-center justify-between px-4 pt-2 h-21
   }
 
   .logo-div{
@@ -107,7 +107,7 @@ i{
     @apply opacity-100;
   }
   .copyright{
-    @apply text-xs md:text-sm opacity-60;
+    @apply text-xs md:text-sm md:opacity-60;
   }
 
 
@@ -152,17 +152,14 @@ i{
       @apply flex flex-col justify-center items-center gap-32 mt-12 mb-24 md:!my-24 lg:flex-row flex-wrap lg:!px-20 2xl:!px-65;
     }
     .album, .merch{
-      @apply text-white 
+      @apply text-white scale-100 transition-all ease-in-out;
+    }
+    .album:hover, .merch:hover{
+      @apply md:scale-102;
     }
     .album-img-div, .merch-img-div{
       @apply w-80 h-auto mx-auto md:w-100;
     }
-        .album-img-div img,
-        .merch-img-div img {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-        }
     .album-title-div, .merch-title-div{
       @apply mt-4
     }

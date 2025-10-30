@@ -23,11 +23,10 @@ export default async function page({ params }) {
     );
   } else {
     merch = merch[0];
-    console.log(merch);
   }
   return (
     <div className="merches-div">
-      <div className="merch">
+      <div className="merch-detail">
         <div className="merch-img-div">
           <MerchImages images={merch.image_urls} />
         </div>

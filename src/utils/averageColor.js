@@ -1,5 +1,4 @@
 export function getAverageRGB(imgEl) {
-
     var blockSize = 5, // only visit every 5 pixels
         defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
         canvas = document.createElement('canvas'),
@@ -14,6 +13,8 @@ export function getAverageRGB(imgEl) {
         return defaultRGB;
     }
 
+    
+    
     height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
     width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
 
@@ -47,7 +48,8 @@ export function getAverageRGB(imgEl) {
    let g1 = hexG.length == 1 ? "0" + hexG : hexG;
    let hexB = rgb.b.toString(16);
     let b1 = hexB.length == 1 ? "0" + hexB : hexB;
-
+    
+    
     return r1+g1+b1;
 
 }
