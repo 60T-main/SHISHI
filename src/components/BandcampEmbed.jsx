@@ -2,20 +2,22 @@
 import React, { useEffect } from "react";
 import { useSharedValue } from "@/hooks/ColorProvider";
 
+function isValidHex(color) {
+  return typeof color === "string" && /^[0-9a-fA-F]{6}$/.test(color);
+}
+
 export default function BandcampEmbed({ albumId }) {
   const { color } = useSharedValue();
+  const safeColor = isValidHex(color?.replace(/^#/, ""))
+    ? color.replace(/^#/, "").toLowerCase()
+    : "FFFFFF";
 
-  useEffect(() => {
-    console.log(color);
-  }, [color]);
   return (
     <div className="embed-div">
       {color && (
         <iframe
           className="embed"
-          src={`https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=333333/linkcol=${
-            color ? color.toLowerCase() : "ffffff"
-          }/artwork=small/transparent=true/`}
+          src={`https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=333333/linkcol=${safeColor}/artwork=small/transparent=true/`}
           seamless
           title="Bandcamp Player"
         />

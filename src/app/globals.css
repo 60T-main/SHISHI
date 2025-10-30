@@ -274,11 +274,17 @@ i{
 
 /* EVENT PAGE */
 
+.events-parent{
+  @apply p-12 flex items-center justify-center;
+}
+
 .event{
   @apply flex flex-col gap-4 
 }
-.event div{
-  @apply mx-auto
+
+
+.event-title-div h3{
+  @apply !text-lg md:!text-xl text-center
 }
 
 
