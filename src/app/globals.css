@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 @import "swiper/css";
 @import 'swiper/css/navigation';
@@ -82,7 +83,7 @@ i{
   }
 
   .logo-div{
-    @apply ml-10
+    @apply ml-2
   }
 
   .logo{
@@ -251,14 +252,18 @@ i{
 
   
 
-  /* PODCAST PAGE */
+  /* PODCAST & PREMIERES PAGE */
 
-  .podcast-div{
-    @apply px-2 mt-8;
+  .podcast-div, .premieres-div{
+    @apply flex items-center justify-center px-2 my-8;
   }
 
-  .podcast{
+  .podcast, .premieres{
     @apply w-full h-160 md:w-1/2 md:h-190 mx-auto;
+  }
+
+  .premieres{
+    @apply h-120 md:h-140
   }
 
 
@@ -282,6 +287,12 @@ i{
 
 .event-title-div h3{
   @apply !text-lg md:!text-xl text-center
+}
+
+/* CONTACT PAGE */
+
+.contact-form-parent{
+  @apply flex flex-col items-center justify-start bg-black py-10 px-4;
 }
 
 
@@ -333,6 +344,33 @@ i{
     }
   }
 }
+
+
+        /* Glitch button animation for loading state */
+        .glitch-btn {
+          position: relative;
+          overflow: hidden;
+        }
+    
+        .glitch-btn::before,
+        .glitch-btn::after {
+          content: attr(data-text);
+          position: absolute;
+          left: 0;
+          width: 100%;
+          opacity: 0.7;
+          pointer-events: none;
+        }
+    
+        .glitch-btn::before {
+          top: 5;
+          animation: glitch-loop-1 0.7s infinite ease-in-out alternate-reverse;
+        }
+    
+        .glitch-btn::after {
+          top: 0;
+          animation: glitch-loop-2 3.0s infinite ease-in-out alternate-reverse;
+        }
 
 @keyframes glitch-loop-1 {
   0% {
@@ -387,6 +425,8 @@ i{
     clip: rect(5px, 9999px, 16px, 0);
   }
 }
+
+
 
 
 }
