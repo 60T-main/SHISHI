@@ -39,7 +39,7 @@ export default async function page() {
   return (
     <div className="albums-div">
       {albums.map((album) => (
-        <Link href={`/${album.id}`} key={album.id}>
+        <Link href={`/discography/${album.id}`} key={album.id}>
           <div className="album">
             <div className="album-img-div">
               <Image
