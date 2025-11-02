@@ -8,6 +8,9 @@ export default async function page() {
   let artists = [];
   try {
     albums = await getAlbums();
+    console.log(albums);
+
+    albums.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
   } catch (error) {
     return <div>Error fetching albums: {error.message}</div>;
   }
