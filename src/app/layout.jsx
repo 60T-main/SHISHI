@@ -5,6 +5,7 @@ import MenuOverlay from "@/components/overlays/menuOverlay";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PageProviderClient from "../hooks/PageProviderClient";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({ children }) {
   return (
@@ -52,6 +53,8 @@ export default function RootLayout({ children }) {
             </div>
           </PageProviderClient>
         </main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
