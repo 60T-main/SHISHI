@@ -51,6 +51,7 @@ export default async function page() {
             <div className="album-title-div">
               <h3>{album.title}</h3>
               <h4>
+                {/* fix this */}
                 {artists.find((a) => a.id === album.artist_id)?.name ||
                   "Unknown Artist"}
               </h4>
