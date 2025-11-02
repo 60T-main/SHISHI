@@ -23,7 +23,7 @@ export default async function page() {
   return (
     <div className="merches-div">
       {merches.map((merch) => (
-        <Link href={`/merch/${merch.id}`} key={merch.id}>
+        <Link href={`/${merch.id}`} key={merch.id}>
           <div className="merch">
             <MerchImage merch={merch} />
             <div className="merch-title-div">
