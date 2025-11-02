@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="https://shishi.ge/logo.jpg"></meta>
         <meta property="og:url" content="https://shishi.ge"></meta>
         <meta property="og:type" content="website"></meta>
+        <title>SHISHI</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
