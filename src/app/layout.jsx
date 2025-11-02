@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           content="width=device-width, initial-scale=1.0"
         ></meta>
         <meta property="og:title" content="SHISHI | Official Site"></meta>
-        <meta property="og:image" content="https://shishi.ge/logo.jpg"></meta>
+        <meta property="og:image" content="https://shishi.ge/logo.png"></meta>
         <meta property="og:url" content="https://shishi.ge"></meta>
         <meta property="og:type" content="website"></meta>
         <title>SHISHI</title>
