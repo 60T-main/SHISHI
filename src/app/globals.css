@@ -141,7 +141,7 @@ i{
 /* HOME CANVAS LOGO */
 
   .canvas-div {
-    @apply mx-auto w-screen h-130 md:h-180 2xl:h-180 z-1;
+    @apply mx-auto w-full h-130 md:h-180 2xl:h-180 z-1;
   }
 
   .canvas{
