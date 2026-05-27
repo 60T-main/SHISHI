@@ -43,6 +43,8 @@ export default async function page({ params }) {
 
     merches = getMerchByAlbum(album.id);
 
+    console.log("MERCHES:", merches[0]);
+
     if (merches && merches[0] && !(merches.length === 0)) {
       merchDom = (
         <div className="merch-album-parent">
