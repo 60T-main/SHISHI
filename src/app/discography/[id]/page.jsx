@@ -22,42 +22,26 @@ export default async function page({ params }) {
       Error fetching album {id}: {error.message}
     </div>;
   }
-  if (!album && !album[0] && album.length === 0) {
+  if (!album) {
     return (
       <div className="text-white flex items-center justify-center text-3xl mt-20">
         No album found.
       </div>
     );
   } else {
-    album = album[0];
-
     // Fetch Artist
-    try {
-      artist = await getArtist(album.artist_id);
-    } catch (error) {
-      <div>
-        Error fetching artist {album.artist_id}: {error.message}
-      </div>;
-    }
-    if (!artist && !artist[0] && artist.length === 0) {
+    artist = getArtist(album.artist_id);
+    if (!artist) {
       return (
         <div className="text-white flex items-center justify-center text-3xl mt-20">
           No artist found.
         </div>
       );
-    } else {
-      artist = artist[0];
     }
 
     // Fetch Merch
 
-    try {
-      merches = await getMerchByAlbum(album.id);
-    } catch (error) {
-      <div>
-        Error fetching merch {album.id}: {error.message}
-      </div>;
-    }
+    merches = getMerchByAlbum(album.id);
 
     if (merches && merches[0] && !(merches.length === 0)) {
       merchDom = (

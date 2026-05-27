@@ -1,84 +1,15 @@
-import supabase from "@/api/client";  
+import albums from "@/data/albums.json";
+import artists from "@/data/artists.json";
+import merch from "@/data/merch.json";
 
-export const getAlbums = async () => {
-    const { data: albums, error } = await supabase.from("album").select("*");
+export const getAlbums = () => albums;
 
-    if (error) {
-      console.error("Error fetching albums:", error);
-      return error.message
-      }
-      
-      return albums;
+export const getAlbum = (id) => albums.find((a) => a.id === Number(id)) ?? null;
 
-};
-export const getAlbum = async (id) => {
-    const { data: album, error } = await supabase
-      .from("album")
-      .select("*")
-      .eq("id", id);
+export const getArtists = () => artists;
 
-    if (error) {
-      console.error("Error fetching album:", error);
-      return error.message;
-    }
-    
-    return album ? album : null;
-};
+export const getArtist = (id) => artists.find((a) => a.id === Number(id)) ?? null;
 
-export const getArtists = async () => {
-    const { data: artists, error } = await supabase.from("artist").select("*");
+export const getMerch = (id) => id ? merch.filter((m) => m.id === Number(id)) : merch;
 
-    if (error) {
-        console.error("Error fetching artists:", error);
-        return error.message
-    }
-    
-    return artists;
-}
-export const getArtist = async (id) => {
-    const { data: artist, error } = await supabase.from("artist").select("*")
-      .eq("id", id);
-
-    if (error) {
-        console.error("Error fetching artist:", error);
-        return error.message
-    }
-    
-    return artist ? artist : null;
-}
-      
-  export const getMerch =  async (id) => {
-    let query = supabase.from("merch").select("*");
-    if (id) {
-      query = query.eq("id", id);
-    }
-    
-    const { data: merch, error } = await query;
-
-    if (error) {
-      console.error("Error fetching merch:", error);
-      return error.message
-      }
-    
-    return merch;
-
-
-};
-  export const getMerchByAlbum =  async (id) => {
-    let query = supabase.from("merch").select("*");
-    if (id) {
-      query = query.eq("album_id", id);
-    }
-    
-    const { data: merch, error } = await query;
-
-    if (error) {
-      console.error("Error fetching merch:", error);
-      return error.message
-      }
-    
-    return merch;
-
-
-};
-  
+export const getMerchByAlbum = (id) => merch.filter((m) => m.album_id === Number(id));
