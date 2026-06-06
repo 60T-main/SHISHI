@@ -79,6 +79,19 @@ export default async function page({ params }) {
 
   return (
     <ColorProvider>
+      {/* Sticky Buy Now — mobile only */}
+      <a
+        href={album.bandcamp_link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="album-buy-sticky lg:hidden"
+      >
+        <h2 className="glitch" data-text="Buy Now">
+          Buy <span>Now</span>
+        </h2>
+      </a>
+
+      <div>
       <div className="album-bancamp-parent">
         <div className="albums-detail-div">
           <div className="album-detail">
@@ -90,12 +103,24 @@ export default async function page({ params }) {
                 <p>[{album.catalog}]</p>
                 <p>{album.release_date}</p>
               </div>
+              {/* Desktop Buy Now */}
+              <a
+                href={album.bandcamp_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden lg:block album-buy-desktop"
+              >
+                <h2 className="glitch" data-text="Buy Now">
+                  Buy <span>Now</span>
+                </h2>
+              </a>
             </div>
           </div>
         </div>
         <BandcampEmbed albumId={albumId} />
       </div>
       {merchDom ? merchDom : ""}
+      </div>
     </ColorProvider>
   );
 }

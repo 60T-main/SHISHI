@@ -182,7 +182,23 @@ i{
   .albums-detail-div{
     @apply my-12
   }
-  
+
+  .album-buy-desktop{
+    @apply mt-8;
+  }
+
+  .album-buy-sticky{
+    @apply fixed bottom-6 right-4 z-50 bg-black flex items-center justify-end px-4 py-2 border border-white/20 lg:!hidden;
+  }
+
+  .album-buy-sticky h2{
+    @apply !text-sm;
+  }
+
+  .album-buy-desktop h2{
+    @apply !text-2xl;
+  }
+
     .album-bancamp-parent{
       @apply flex flex-col lg:flex-row items-center justify-center gap-12 mb-4 lg:mb-0 lg:mt-20;
     }
