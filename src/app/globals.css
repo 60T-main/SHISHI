@@ -192,7 +192,7 @@ i{
   }
 
   .album-buy-sticky h2{
-    @apply !text-sm;
+    @apply !text-lg;
   }
 
   .album-buy-desktop h2{
