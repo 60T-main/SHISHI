@@ -250,5 +250,17 @@
 		"cover_url": "https://f4.bcbits.com/img/a1317079481_10.jpg",
 		"description": null,
 		"artist_id": 3
+	},
+		{
+		"id": 21,
+		"created_at": "2026-09-07T18:16:02.250792+00:00",
+		"title": "Blood Thirsty Times",
+		"release_date": "2026-08-12",
+		"catalog": "SHI011",
+		"bandcamp_id": 798630593,
+		"bandcamp_link": "https://shishirecords.bandcamp.com/album/blood-thirsty-times",
+		"cover_url": "https://f4.bcbits.com/img/a2940260853_10.jpg",
+		"description": null,
+		"artist_id": 14
 	}
 ]
